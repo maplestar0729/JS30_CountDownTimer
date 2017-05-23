@@ -1,0 +1,35 @@
+<html>
+<head>
+</head>
+<body>
+<input id="setTime">
+<button onclick="startCountDownTimer()">start</button>
+<div id="cdTime">
+    
+</div>
+<script>
+    
+    var endTime = 0;
+    function startCountDownTimer()
+    {
+        var setTime = document.getElementById("setTime").value;
+
+        var sTime = parseInt(setTime);
+        endTime = setTime * 60;
+        document.getElementById("cdTime").innerHTML = sTime + ":00" ;
+        displayTime();
+    }
+
+    function displayTime()
+    {
+        var tmpStr = "";
+        tmpStr = endTime%60;
+        tmpStr = ":" + tmpStr;
+        tmpStr = Math.floor(endTime/60) +tmpStr;
+        document.getElementById("cdTime").innerHTML = tmpStr ;
+        endTime -=1;
+        setTimeout("displayTime()",1000);
+    }
+</script>
+</body>
+</html>
